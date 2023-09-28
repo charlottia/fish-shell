@@ -63,7 +63,7 @@ function alias --description 'Creates a function wrapping a command'
     # The latter will have rare false positives but it's more important to
     # prevent recursion for this high-level command.
     set -l wraps
-    if test $first_word != $name; and test $last_word != $name
+    if test $first_word != $name; and test $last_word != $name -o $first_word = "git"
         set wraps --wraps (string escape -- $body)
     end
 
